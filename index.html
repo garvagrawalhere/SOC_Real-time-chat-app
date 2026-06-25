@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App UI</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        background: #f0f2f5;
+      }
+
+      /* MAIN LAYOUT */
+      .container {
+        display: flex;
+        height: 100vh;
+      }
+
+      /* SIDEBAR */
+      .sidebar {
+        width: 320px;
+        background: #ffffff;
+        border-right: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .logo {
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #25d366;
+        border-bottom: 1px solid #eee;
+      }
+
+      .search-box {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+      }
+
+      .contacts {
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px;
+        cursor: pointer;
+        border-bottom: 1px solid #f1f1f1;
+        transition: background 0.2s;
+      }
+
+      .contact-card:hover {
+        background: #f7f7f7;
+      }
+
+      .avatar {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: #25d366;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .contact-info h4 {
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .contact-info p {
+        font-size: 13px;
+        color: #666;
+      }
+
+      /* CHAT AREA */
+      .chat-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* HEADER */
+      .chat-header {
+        background: white;
+        padding: 16px 20px;
+        border-bottom: 1px solid #ddd;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      /* MESSAGES */
+      .messages {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: #e5ddd5;
+      }
+
+      .message {
+        max-width: 70%;
+        padding: 12px 16px;
+        border-radius: 16px;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      /* RECEIVED */
+      .received {
+        align-self: flex-start;
+        background: white;
+        color: #222;
+        border-top-left-radius: 4px;
+      }
+
+      /* SENT */
+      .sent {
+        align-self: flex-end;
+        background: #25d366;
+        color: white;
+        border-top-right-radius: 4px;
+      }
+
+      /* INPUT AREA */
+      .chat-input {
+        background: white;
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        display: flex;
+        gap: 10px;
+      }
+
+      .chat-input input {
+        flex: 1;
+        padding: 12px 14px;
+        border: 1px solid #ccc;
+        border-radius: 25px;
+        outline: none;
+        font-size: 14px;
+      }
+
+      .chat-input button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 25px;
+        background: #25d366;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .chat-input button:hover {
+        background: #1ebe5d;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+
+        .chat-area {
+          width: 100%;
+        }
+
+        .message {
+          max-width: 85%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="logo">ChatApp</div>
+
+        <div class="search-box">
+          <input type="text" placeholder="Search contacts..." />
+        </div>
+
+        <div class="contacts">
+          <div class="contact-card">
+            <div class="avatar">A</div>
+            <div class="contact-info">
+              <h4>Aryan</h4>
+              <p>Sure! Btw, what was his address again?</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="avatar">B</div>
+            <div class="contact-info">
+              <h4>Atiksh</h4>
+              <p>Project is due tomorrow!</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="avatar">C</div>
+            <div class="contact-info">
+              <h4>Sagar</h4>
+              <p>Who's gonna prepare the PPT?</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CHAT AREA -->
+      <main class="chat-area">
+        <!-- HEADER -->
+        <div class="chat-header">Aryan</div>
+
+        <!-- MESSAGES -->
+        <div class="messages">
+          
+          <div class="message received">
+            <p>Hi</p>
+
+            <div class="received-timestamp">
+              9:14 PM
+            </div>
+          </div>
+          <div class="message sent">
+            <p>Hello! How's it going?</p>
+
+            <div class="sent-timestamp">
+              9:15 PM
+            </div>
+          </div>
+
+
+
+          <div class="message received">
+            <p>Everything is good. Just a reminder that the project is due
+            tomorrow.</p>
+
+            <div class="received-timestamp">
+              9:17 PM
+            </div>
+          </div>
+
+          <div class="message sent">
+            <p>Sure! Btw, what was his address again?</p>
+
+            <div class="sent-timestamp">
+              9:20 PM
+            </div>
+          </div>
+
+          
+        </div>
+
+        <!-- INPUT -->
+        <div class="chat-input">
+          <input type="text" placeholder="Type a message..." />
+          <button id='send-btn'>Send</button>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
