@@ -1,0 +1,6 @@
+.message{display:flex;flex-direction:column;max-width:70%}
+.message.me{align-self:flex-end;text-align:right}
+.message.them{align-self:flex-start;text-align:left}
+.bubble{padding:8px 12px;border-radius:18px;background:#e6e6ea;display:inline-block}
+.message.me .bubble{background:#dcf8c6}
+.time{font-size:11px;color:#999;margin-top:4px}

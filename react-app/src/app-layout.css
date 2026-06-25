@@ -1,0 +1,2 @@
+.app-root{display:flex;height:100vh;font-family:Arial,Helvetica,sans-serif}
+.chat-area{display:flex;flex-direction:column;flex:1}
