@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, rtdb } from "../firebase";
+import { ref, onValue } from "firebase/database";
 import MessageBubble from "./MessageBubble";
 import "./ChatWindow.css";
 
 export default function ChatWindow({ roomId }) {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [typingUsers, setTypingUsers] = useState([]);
   const bottomRef = useRef(null);
 
   // Listen to messages in real-time
@@ -30,10 +32,27 @@ export default function ChatWindow({ roomId }) {
     return unsubscribe;
   }, [roomId]);
 
+  // Listen to typing indicator
+  useEffect(() => {
+    if (!roomId) return;
+
+    const typingRef = ref(rtdb, `typing/${roomId}`);
+    const unsubscribe = onValue(typingRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const typingObj = snapshot.val();
+        setTypingUsers(Object.values(typingObj));
+      } else {
+        setTypingUsers([]);
+      }
+    });
+
+    return unsubscribe;
+  }, [roomId]);
+
   // Auto-scroll to bottom when messages change
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, typingUsers]);
 
   if (loading)
     return (
@@ -48,6 +67,11 @@ export default function ChatWindow({ roomId }) {
         {messages.map((m) => (
           <MessageBubble key={m.id} message={m} />
         ))}
+        {typingUsers.length > 0 && (
+          <div className="typing-indicator">
+            {typingUsers.join(", ")} is typing...
+          </div>
+        )}
         <div ref={bottomRef}></div>
       </div>
     </main>
