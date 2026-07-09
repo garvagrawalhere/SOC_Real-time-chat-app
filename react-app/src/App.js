@@ -15,15 +15,7 @@ function App() {
 	]);
 
 	const [active, setActive] = useState(contacts[0]);
-	const [messages, setMessages] = useState([
-		{ id: 1, text: 'Hello', me: false, time: '10:00' },
-		{ id: 2, text: 'Hi!', me: true, time: '10:01' }
-	]);
-
-	const handleSend = (text) => {
-		const m = { id: Date.now(), text, me: true, time: new Date().toLocaleTimeString() };
-		setMessages(prev => [...prev, m]);
-	};
+	const roomId = 'room1'; // Hardcode for now, will be dynamic later
 
 	return (
 		<ProtectedRoute>
@@ -31,8 +23,8 @@ function App() {
 				<Sidebar contacts={contacts} onSelect={setActive} />
 				<div className="chat-area">
 					<Header chat={active} />
-					<ChatWindow messages={messages} />
-					<MessageInput onSend={handleSend} />
+					<ChatWindow roomId={roomId} />
+					<MessageInput roomId={roomId} />
 				</div>
 			</div>
 		</ProtectedRoute>
