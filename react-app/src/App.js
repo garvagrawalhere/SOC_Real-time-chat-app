@@ -6,6 +6,7 @@ import ChatWindow from './components/ChatWindow';
 import MessageInput from './components/MessageInput';
 import './app-layout.css';
 import personPlaceholder from './person_placeholder.png';
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
 	const [contacts] = useState([
@@ -25,15 +26,17 @@ function App() {
 	};
 
 	return (
-		<div className="app-root">
-			<Sidebar contacts={contacts} onSelect={setActive} />
-			<div className="chat-area">
-				<Header chat={active} />
-				<ChatWindow messages={messages} />
-				<MessageInput onSend={handleSend} />
+		<ProtectedRoute>
+			<div className="app-root">
+				<Sidebar contacts={contacts} onSelect={setActive} />
+				<div className="chat-area">
+					<Header chat={active} />
+					<ChatWindow messages={messages} />
+					<MessageInput onSend={handleSend} />
+				</div>
 			</div>
-		</div>
+		</ProtectedRoute>
 	);
 }
-
+		
 export default App;
