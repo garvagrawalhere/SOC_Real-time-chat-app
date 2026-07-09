@@ -1,5 +1,6 @@
 # SOC_Real-time-chat-app
 A fullstack real time chat app.
+Link to the deployed app:   https://soc-real-time-chat-app-n5n2.vercel.app/
 
 
 
