@@ -1,96 +1,15 @@
-# Real-Time Chat Application
+# SOC_Real-time-chat-app
+A fullstack real time chat app.
 
-A modern, real-time chat application built with React and Firebase.
 
-## 🚀 Features
 
-- **Authentication**: Secure Google Sign-In using Firebase Auth.
-- **Real-time Messaging**: Instant messaging powered by Firestore `onSnapshot`.
-- **Chat Rooms**: Dynamic room creation and navigation using React Router.
-- **Presence Tracking**: Online/Offline status indicators via Firebase Realtime Database.
-- **Typing Indicators**: Real-time "User is typing..." notifications.
-- **Responsive UI**: Clean, modern interface with a professional color palette.
+### Note: The real app is the react-app folder. 
 
-## 🛠️ Tech Stack
+## My firebase App:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/617dbd6a-c01f-4eda-b75e-a0edd53a0282" />
 
-- **Frontend**: React 18, React Router v6, CSS3
-- **Backend**: Firebase (Auth, Firestore, Realtime Database)
-- **Deployment**: Firebase Hosting
-
-## 📦 Installation & Setup
-
-1. **Clone the repository**
-
-   ```bash
-   git clone <your-repo-url>
-   cd SOC_Real-time-chat-app/react-app
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Firebase Configuration**
-   Create a `src/firebase.js` file (or update the existing one) with your Firebase config:
-
-   ```javascript
-   const firebaseConfig = {
-     apiKey: "YOUR_API_KEY",
-     authDomain: "YOUR_AUTH_DOMAIN",
-     projectId: "YOUR_PROJECT_ID",
-     storageBucket: "YOUR_STORAGE_BUCKET",
-     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-     appId: "YOUR_APP_ID",
-   };
-   ```
-
-4. **Run the application**
-   ```bash
-   npm start
-   ```
-
-## 🔐 Security Rules
-
-To secure your app, apply these rules in your Firebase Console:
-
-### Firestore Rules
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-    match /rooms/{roomId} {
-      allow read, write: if request.auth != null;
-
-      match /messages/{messageId} {
-        allow read, write: if request.auth != null;
-      }
-    }
-  }
-}
-```
-
-### Realtime Database Rules
-
-```json
-{
-  "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
-  }
-}
-```
-
-## 🌐 Deployment
-
-The app is deployed using Firebase Hosting.
-
-```bash
-npm run build
-firebase deploy
-```
+## My chat app:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/64735ac0-fda2-4830-8e45-bcec5f901a66" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fcd0e430-8192-47c4-80f3-c5c9ab0d9987" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/15782909-3396-42a8-a7a2-3a7666adfe62" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cbc60b83-fe66-478d-866b-7994fdf640a7" />
